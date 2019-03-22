@@ -14,12 +14,12 @@ api=tweepy.API(auth)
 
 def tweet_extraction(query, num):
 	tweets=api.search(query, count=num)
-	csvfile=open('tweetdata.csv','a')
+	csvfile=open('../data/tweetdata.csv','a')
 	csvWriter=csv.writer(csvfile)
 	for tweet in tweets:
-		#if tweet['retweeted']==False:
-		csvWriter.writerow([tweet.text.encode('utf-8')])
+		if tweet.retweeted==False and 'RT @' not in tweet.text:
+			csvWriter.writerow([tweet.text.encode('utf-8')])
 	csvfile.close()
 
-tweet_extraction("Trump",10)
+tweet_extraction("Trump",20000)
 
