@@ -17,7 +17,8 @@ def tweet_extraction(query, num):
 	csvfile=open('../data/tweetdata.csv','a')
 	csvWriter=csv.writer(csvfile)
 	for tweet in tweets:
-		if tweet.retweeted==False and 'RT @' not in tweet.text:
+		if tweet.retweeted==False and 'RT @' not i
+n tweet.text:
 			csvWriter.writerow([tweet.text.encode('utf-8')])
 	csvfile.close()
 
