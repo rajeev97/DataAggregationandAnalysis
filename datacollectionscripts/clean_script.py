@@ -31,8 +31,8 @@ def stemming(text):
 	for i in range(len(words)):
 			words[i] = ps.stem(words[i])
 	return words
-file = open("nytimescontent.txt")
-newfile = open("nytimescontent_no_punct.txt", "w")
+file = open("nytimesObama.txt")
+newfile = open("nytimesObama_clean.txt", "w")
 filestring = file.read()
 s = fix_period_indent(filestring)
 no_punct= remove_punct(s)
