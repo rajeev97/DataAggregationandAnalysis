@@ -11,13 +11,13 @@ def remove_punct(text):
 	text = re.sub('\p{P}+', '', text)
 	return text
 def remove_stopwords(text):
-	words = text.split(" ")
+	words = text.split()
+	finalwords = []
 	for i in range(len(words)):
-		if words[i] not in stopword:
-			words[i] = words[i]
-		else:
-			words[i] = ""
-	return words
+		if words[i].lower() not in stopword:
+			#print(words[i])
+			finalwords.append(words[i])
+	return finalwords
 def fix_period_indent(text):
 	l = list(text)
 	for i in range(len(l)):
@@ -32,7 +32,7 @@ def stemming(text):
 			words[i] = ps.stem(words[i])
 	return words
 file = open("UniqueTweetsFinal.txt")
-newfile = open("UniqueTweetsFinal_clean.txt", "w")
+newfile = open("UniqueTweetsFinalClean.txt", "w")
 filestring = file.read()
 s = fix_period_indent(filestring)
 no_punct= remove_punct(s)
